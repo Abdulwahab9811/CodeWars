@@ -57,3 +57,12 @@ class Surgeon {
       this._remainingVacationDays -= daysOff
     }
   }
+  
+  class Nurse extends HospitalEmployee {
+  constructor(name, certifications) {
+    super(name);
+    this._certifications = certifications;
+  }
+}
+
+const nurseOlynyk = new Nurse('Olynyk', ['Trauma', 'Pediatrics']);

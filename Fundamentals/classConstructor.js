@@ -46,7 +46,10 @@ class Surgeon {
       this._name = name;
       this._remainingVacationDays = 20;
     }
-  
+
+    static generatePassword() {
+      return Math.floor(Math.random() * 10000); // Generate a random integer between 0 and 10,000;
+    }
     get name(){
       return this._name;
     }
@@ -63,6 +66,20 @@ class Surgeon {
     super(name);
     this._certifications = certifications;
   }
+  get certifications() {
+    return this._certifications
+  }
+
+  addCertification(newCertification) {
+    this._certifications.push(newCertification);
+   }
 }
 
 const nurseOlynyk = new Nurse('Olynyk', ['Trauma', 'Pediatrics']);
+
+nurseOlynyk.takeVacationDays(5);
+console.log(nurseOlynyk.remainingVacationDays);
+
+nurseOlynyk.addCertification('Genetics')
+
+console.log(nurseOlynyk.certifications);;

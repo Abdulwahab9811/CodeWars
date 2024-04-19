@@ -23,8 +23,16 @@ const myPromise = new Promise((resolve, reject) => {
   
   const myExecutor = (resolve, reject) => {
     if (inventory.sunglasses > 0) {
-      ('Sunglasses order processed.');
+      resolve('Sunglasses order processed.');
     } else {
-      ("That item is sold out.");
+      reject("That item is sold out.");
     }
   };
+
+  const orderSunglasses = () => {
+  return new Promise(myExecutor);
+} 
+
+const orderPromise = orderSunglasses()
+
+console.log(orderPromise);

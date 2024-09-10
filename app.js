@@ -14,3 +14,8 @@ const handleFailure = (ResolveRejected) => {
 
 checkInventory(order)
 .then(handleSuccess,handleFailure);
+//adding a .then and a .catch tocheck each result of the promise
+checkInventory(order) 
+  .then(handleSuccess)
+  .catch(handleFailure);
+

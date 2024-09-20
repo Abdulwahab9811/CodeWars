@@ -1,21 +1,22 @@
-const {checkInventory} = require('./library.js');
+const {checkInventory, processPayment, shipOrder} = require('./library.js');
 
-const order = [['sunglasses', 1], ['bags', 2]];
-
-// Write your code below:
-
-const handleSuccess = (Resolvedvalue)  => {
-  console.log(Resolvedvalue);
+const order = {
+  items: [['sunglasses', 1], ['bags', 2]],
+  giftcardBalance: 79.82
 };
 
-const handleFailure = (ResolveRejected) => {
-  console.log(ResolveRejected);
-}
-
 checkInventory(order)
-.then(handleSuccess,handleFailure);
-//adding a .then and a .catch tocheck each result of the promise
-checkInventory(order) 
-  .then(handleSuccess)
-  .catch(handleFailure);
-
+.then((resolvedValueArray) => {
+  
+  return processPayment(resolvedValueArray);
+})
+.then((resolvedValueArray) => {
+  
+  return shipOrder(resolvedValueArray);
+})
+.then((successMessage) => {
+  console.log(successMessage);
+})
+.catch((errorMessage) => {
+  console.log(errorMessage);
+});

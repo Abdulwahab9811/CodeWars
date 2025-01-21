@@ -33,3 +33,23 @@ function generateHashtag (str) {
   console.log(generateHashtag("    Hello     World   "));
   console.log(generateHashtag("")); 
   console.log(generateHashtag("Helloworld")); 
+
+
+
+  /////////////////////////////////////////////////////
+
+
+
+
+// switching to capital letter for  each first letter of each word inside string.//
+
+  String.prototype.toJadenCase = function () {
+    return this.split(' ') // Split the string into an array of words
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each word
+      .join(' '); // Join the words back into a single string
+  };
+  
+  // Example usage
+  const str = "how can mirrors be real if our eyes aren't real";
+  console.log(str.toJadenCase()); 
+  // Output: "How Can Mirrors Be Real If Our Eyes Aren't Real"
